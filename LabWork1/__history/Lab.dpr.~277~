@@ -1,18 +1,17 @@
-program Lab;
+﻿program Lab;
 
 {$APPTYPE CONSOLE}
 {$R *.res}
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  Windows,
+  BlockS in 'BlockS.pas',
+  BinS in 'BinS.pas',
+  SAll in 'SAll.pas';
 
-Type
-  noteRecord = record
-    num: Integer;
-    str: string;
-  end;
 
-  TMAS = array [1 .. 1000] of noteRecord;
+
 
 function Compare(a: noteRecord; b: noteRecord; fieldChoose: Integer): Integer;
 begin
@@ -46,7 +45,6 @@ begin
   begin
     mas[i].num := Random(325);
     mas[i].str := 'sensor_' + i.ToString;
-
   end;
 end;
 
@@ -91,6 +89,7 @@ end;
 
 procedure PrintMas(var mas: TMAS);
 begin
+  Writeln;
   writeln('_____________________________________________________');
   writeln('Index of elem    Field 1            Field 2');
   for var i := Low(mas) to High(mas) do
@@ -98,83 +97,49 @@ begin
     writeln(i:7, mas[i].num:17, mas[i].str:20);
   end;
   writeln('_____________________________________________________');
-
 end;
 
-function BinSearch(var mas: TMAS; target: string; outInfo: boolean): Integer; overload;
+procedure PrintSearch(var mas: TOut; apealCount: Integer;searchName:string);
 begin
-  var
-    left, right, mid,count: Integer;
-  var elem:noteRecord;
-  count:=0;
-
-  left := Low(mas);
-  right := High(mas);
-  Result := -1;
-
-  while left <= right do
+  Writeln;
+  writeln('Result of Search');
+  writeln('_____________________________________________________');
+  writeln('Index of elem    Field 1            Field 2');
+  for var i := Low(mas) to High(mas) do
   begin
-    mid := left + (right - left) div 2;
-    elem:=mas[mid];
-    Inc(count);
-    if (elem.str = target) then
-      Result := mid;
-    if (elem.str < target) then
-      left := mid + 1
-    else
-      right := mid - 1;
+    writeln(mas[i].index:7, mas[i].num:17, mas[i].str:20);
   end;
-  if outInfo then
-  writeln('Запись была найдена за ',count,' обращений');
+  writeln('_____________________________________________________');
+  writeln('Count of apeal to mas: ', apealCount);
+  Readln;
 end;
 
-function BinSearch(var mas: TMAS; target: integer; outInfo: boolean): array of noteRecord; overload;
+
+var
+  mas: TMAS;
+  outmas: TOut;
+  inputStr: string;
+  inputInt,inputInt2, apealCount: Integer;
 begin
-  var
-    left, right, mid,count: Integer;
-  var elem:noteRecord;
-  count:=0;
 
-  left := Low(mas);
-  right := High(mas);
-  Result := -1;
-
-  while left <= right do
-  begin
-    mid := left + (right - left) div 2;
-    elem:=mas[mid];
-    Inc(count);
-    if (elem.num = target) then
-      Result := mid;
-    if (elem.num < target) then
-      left := mid + 1
-    else
-      right := mid - 1;
-  end;
-  if outInfo then
-  writeln('Запись была найдена за ',count,' обращений');
-end;
-
-begin
-  var
-    mas: TMAS;
-  var
-    inputStr: string;
-  var
-    inputInt:Integer;
   FillMas(mas);
   PrintMas(mas);
-  MasSort(mas,2);
+  MasSort(mas, 2);
   PrintMas(mas);
+  writeln('Enter InputStr');
   Readln(inputStr);
-  BinSearch(mas,inputStr,True);
-  MasSort(mas,1);
+  outmas := BlockSearch(mas, inputStr, apealCount);
+  PrintSearch(outmas, apealCount);
+  MasSort(mas, 1);
   PrintMas(mas);
+  writeln('Enter inputInt');
   Readln(inputInt);
-  BinSearch(mas,inputInt,True);
-
-
-
-  readln;
-
-  end.
+  outmas := BlockSearch(mas, inputInt, apealCount);
+  PrintSearch(outmas, apealCount);
+   writeln('Enter inputIntx2');
+  Readln(inputInt);
+  Readln(inputInt2);
+  outmas :=BlockSearch(mas, inputInt,inputInt2, apealCount);
+  PrintSearch(outmas, apealCount);
+  Readln;
+end.

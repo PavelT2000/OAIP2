@@ -2,6 +2,15 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>1899.12.30 00:00:00.000.293,=C:\Users\pavel\OneDrive\Документы\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.298,C:\Users\pavel\OneDrive\Документы\Embarcadero\Studio\Projects\Project1.dproj=C:\GitHub\OAIP2\LabWork1\Lab.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.298,C:\GitHub\OAIP2\LabWork1\Lab.dproj=C:\Users\pavel\OneDrive\Документы\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2025.02.24 01:40:50.975,=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>2025.02.24 01:41:06.754,C:\Учёба\.NET\OAIP2\LabWork1\BlockSearch.pas=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>2025.02.24 01:42:37.388,=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>2025.02.24 01:42:48.473,C:\Учёба\.NET\OAIP2\LabWork1\BinSearch.pas=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>2025.02.24 01:44:02.599,=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>2025.02.24 01:44:20.465,C:\Учёба\.NET\OAIP2\LabWork1\SearchAll.pas=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>2025.02.24 01:48:48.405,C:\Учёба\.NET\OAIP2\LabWork1\BinS.pas=C:\Учёба\.NET\OAIP2\LabWork1\BinSearch.pas</Transaction>
+    <Transaction>2025.02.24 01:48:56.126,C:\Учёба\.NET\OAIP2\LabWork1\BlockS.pas=C:\Учёба\.NET\OAIP2\LabWork1\BlockSearch.pas</Transaction>
+    <Transaction>2025.02.24 01:49:03.758,C:\Учёба\.NET\OAIP2\LabWork1\SAll.pas=C:\Учёба\.NET\OAIP2\LabWork1\SearchAll.pas</Transaction>
   </Transactions>
 </BorlandProject>

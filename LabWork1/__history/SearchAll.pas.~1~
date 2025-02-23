@@ -1,0 +1,38 @@
+unit SearchAll;
+
+interface
+function SearchAll(const mas: TMAS; index: Integer; target: Integer): TOut;
+var
+  flagL, flagH, counter: Integer;
+implementation
+function SearchAll(const mas: TMAS; index: Integer; target: Integer): TOut;
+var
+  flagL, flagH, counter: Integer;
+begin
+  flagL := 0;
+  flagH := 0;
+  counter := 1;
+  while (flagL = 0) or (flagH = 0) do
+  begin
+    if (target <> mas[index - counter].num) and (flagL = 0) then
+      flagL := index - counter + 1;
+    if (target <> mas[index + counter].num) and (flagH = 0) then
+      flagH := index + counter - 1;
+    Inc(counter);
+  end;
+  SetLength(Result, flagH - flagL + 1);
+  for var i := flagL to flagH do
+  begin
+    Result[i - flagL].index := i;
+    Result[i - flagL].num := target;
+    Result[i - flagL].str := mas[i].str;
+  end;
+
+end;
+var
+  mas: TMAS;
+  outmas: TOut;
+  inputStr: string;
+  inputInt,inputInt2, apealCount: Integer;
+
+end.
