@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.388,=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.473,C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas=C:\Учёба\.NET\OAIP2\LabWork1\BinSearch.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.465,C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas=C:\Учёба\.NET\OAIP2\LabWork1\SearchAll.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.754,C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas=C:\Учёба\.NET\OAIP2\LabWork1\BlockSearch.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.298,C:\Users\pavel\OneDrive\Документы\Embarcadero\Studio\Projects\Project1.dproj=C:\GitHub\OAIP2\LabWork1\Lab.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.599,=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.758,C:\Учёба\.NET\OAIP2\LabWork1\SearchAll.pas=C:\Учёба\.NET\OAIP2\LabWork1\SAll.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.405,C:\Учёба\.NET\OAIP2\LabWork1\BinSearch.pas=C:\Учёба\.NET\OAIP2\LabWork1\BinS.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.126,C:\Учёба\.NET\OAIP2\LabWork1\BlockSearch.pas=C:\Учёба\.NET\OAIP2\LabWork1\BlockS.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.293,=C:\Users\pavel\OneDrive\Документы\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.975,=C:\Учёба\.NET\OAIP2\LabWork1\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
