@@ -1,0 +1,29 @@
+unit UpdateUnit;
+
+interface
+
+implementation
+procedure Update;
+var
+  choose: integer;
+  input: string;
+begin
+  GetInput('Изменить:' + #10 + #13 + '1.Заказ' + #10 + #13 + '2.Блюдо' + #10 +
+    #13 + '3.Категорию блюда' + #10 + #13);
+  readln(input);
+  if (TryStrToInt(input, choose)) then
+    case choose of
+      2:
+        begin
+          ChangeDish;
+          readln;
+        end;
+      3:
+        begin
+          ChangeCategory;
+          readln;
+        end;
+    end;
+end;
+
+end.

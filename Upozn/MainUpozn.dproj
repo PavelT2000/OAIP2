@@ -94,6 +94,7 @@
         <DCCReference Include="CreateUnit.pas"/>
         <DCCReference Include="ReadUnit.pas"/>
         <DCCReference Include="LoadSave.pas"/>
+        <DCCReference Include="UpdateUnit.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

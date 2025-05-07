@@ -9,7 +9,8 @@ uses
   Windows,
   CreateUnit in 'CreateUnit.pas',
   ReadUnit in 'ReadUnit.pas',
-  LoadSave in 'LoadSave.pas';
+  LoadSave in 'LoadSave.pas',
+  UpdateUnit in 'UpdateUnit.pas';
 
 procedure clrscr;
 var
@@ -272,7 +273,7 @@ begin
       2:
         MyRead;
       3:
-        Update;
+        UpdateUnit.Update;
       4:
         Remove;
       5:
