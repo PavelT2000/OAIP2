@@ -1,0 +1,180 @@
+unit BlockS;
+
+interface
+
+uses SAll;
+
+function BlockSearch(var mas: TMAS; target: string; var counter: Integer)
+  : TOut; overload;
+function BlockSearch(const mas: TMAS; target: Integer; var counter: Integer)
+  : TOut; overload;
+function BlockSearch(const mas: TMAS; start, myEnd: Integer;
+  var counter: Integer): TOut; overload;
+
+implementation
+
+function BlockSearch(var mas: TMAS; target: string; var counter: Integer)
+  : TOut; overload;
+var
+  blockNum, blockLen, i, blockCount, rightBound: Integer;
+  flag: boolean;
+
+begin
+  counter := 0;
+  blockNum := 0;
+  i := 1;
+  blockLen := Trunc(sqrt(Length(mas)));
+  blockCount := Trunc(Length(mas) / blockLen) + 1;
+  while (blockNum = 0) and (i <= blockCount) do
+  begin
+    Inc(counter);
+    if i <> blockCount then
+    begin
+      if mas[i * blockLen + 1].str >= target then
+      begin
+        blockNum := i;
+      end;
+    end
+    else
+    begin
+      if mas[high(mas)].str >= target then
+      begin
+        blockNum := i;
+      end;
+    end;
+
+    Inc(i);
+  end;
+  i := (blockNum - 1) * blockLen + 1;
+  if blockNum = blockCount then
+    rightBound := high(mas)
+  else
+    rightBound := (blockNum) * blockLen + 1;
+
+  flag := true;
+  while (i <= rightBound) and flag do
+  begin
+    Inc(counter);
+    if mas[i].str = target then
+    begin
+      SetLength(Result, 1);
+      Result[0].index := i;
+      Result[0].num := mas[i].num;
+      Result[0].str := mas[i].str;
+      flag := false
+    end;
+    Inc(i);
+  end;
+
+end;
+
+function BlockSearch(const mas: TMAS; target: Integer; var counter: Integer)
+  : TOut; overload;
+var
+  blockNum, blockLen, blockCount, i, rightBound: Integer;
+  flag: boolean;
+begin
+  counter := 0;
+  blockNum := 0;
+  i := 1;
+  blockLen := Trunc(sqrt(Length(mas)));
+  blockCount := Trunc(Length(mas) / blockLen) + 1;
+  while (blockNum = 0) and (i <= blockCount) do
+  begin
+    Inc(counter);
+    if i <> blockCount then
+    begin
+      if mas[i * blockLen + 1].num >= target then
+      begin
+        blockNum := i;
+      end;
+    end
+    else
+    begin
+      if mas[high(mas)].num >= target then
+      begin
+        blockNum := i;
+      end;
+    end;
+    Inc(i);
+  end;
+  if blockNum <> 0 then
+  begin
+    i := (blockNum - 1) * blockLen + 1;
+    if blockNum = blockCount then
+      rightBound := high(mas)
+    else
+      rightBound := (blockNum) * blockLen + 1;
+    flag := true;
+    while (i <= (blockNum) * blockLen + 1) and flag do
+    begin
+      Inc(counter);
+      if mas[i].num = target then
+      begin
+        Result := SearchAll(mas, i, target);
+        flag := false
+      end;
+      Inc(i);
+    end;
+  end;
+end;
+
+function BlockSearch(const mas: TMAS; start, myEnd: Integer;
+  var counter: Integer): TOut; overload;
+var
+  blockNum, blockCount, blockLen, i, rightBound: Integer;
+  flag: boolean;
+begin
+  counter := 0;
+  blockNum := 0;
+  i := 1;
+  blockLen := Trunc(sqrt(Length(mas)));
+  blockCount := Trunc(Length(mas) / blockLen) + 1;
+  while (blockNum = 0) and (i <= blockCount) do
+  begin
+    Inc(counter);
+    if i <> blockCount then
+    begin
+      if mas[i * blockLen + 1].num >= start then
+      begin
+        blockNum := i;
+      end;
+    end
+    else
+    begin
+      if mas[high(mas)].num >= start then
+      begin
+        blockNum := i;
+      end;
+    end;
+
+    Inc(i);
+  end;
+  if blockNum <> 0 then
+  begin
+    i := (blockNum - 1) * blockLen + 1;
+    if blockNum = blockCount then
+      rightBound := high(mas)
+    else
+      rightBound := (blockNum) * blockLen + 1;
+    flag := true;
+    while (i <= rightBound) and flag do
+    begin
+      Inc(counter);
+
+      if (mas[i].num >= start) and (mas[i].num <= myEnd) and flag then
+      begin
+
+        Result := SearchAllDiapos(mas, i, start, myEnd);
+        flag := false
+      end;
+      Inc(i);
+    end;
+  end
+  else
+  begin
+    Setlength(Result,0);
+  end;
+end;
+
+end.

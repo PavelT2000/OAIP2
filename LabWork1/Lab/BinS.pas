@@ -1,0 +1,114 @@
+unit BinS;
+
+
+
+interface
+uses SAll;
+
+
+
+function BinSearch(var mas: TMAS; target: string; var counter: Integer)
+  : TOut; overload;
+function BinSearch(const mas: TMAS; target: Integer; var counter: Integer)
+  : TOut; overload;
+function BinSearch(const mas: TMAS; start, myEnd: Integer; var counter: Integer)
+  : TOut; overload;
+
+implementation
+
+function BinSearch(var mas: TMAS; target: string; var counter: Integer)
+  : TOut; overload;
+var
+  left, right, mid, count: Integer;
+  elem: noteRecord;
+  flag:boolean;
+begin
+Setlength(result,0);
+  counter := 0;
+  left := Low(mas);
+  right := High(mas);
+  SetLength(Result, 0);
+  flag:=true;
+
+  while (left <= right) and flag do
+  begin
+    mid := left + (right - left) div 2;
+    elem := mas[mid];
+    Inc(counter);
+    if (elem.str = target) then
+    begin
+      SetLength(Result, 1);
+      Result[0].index := mid;
+      Result[0].num := mas[mid].num;
+      Result[0].str := mas[mid].str;
+      flag:=false;
+    end;
+    if (elem.str < target) then
+      left := mid + 1
+    else
+      right := mid - 1;
+  end;
+end;
+
+function BinSearch(const mas: TMAS; target: Integer; var counter: Integer)
+  : TOut; overload;
+  var
+    left, right, mid, count: Integer;
+     elem: noteRecord;
+    flag:boolean;
+begin
+  flag:=true;
+  counter := 0;
+  left := Low(mas);
+  right := High(mas);
+  Setlength(result,0);
+  while (left <= right) and flag do
+  begin
+    mid := left + (right - left) div 2;
+    elem := mas[mid];
+    Inc(counter);
+    if (elem.num = target) then
+    begin
+      Result := SearchAll(mas, mid, mas[mid].num);
+      flag:=false;
+    end;
+    if (elem.num < target) then
+      left := mid + 1
+    else
+      right := mid - 1;
+  end;
+
+end;
+
+function BinSearch(const mas: TMAS; start, myEnd: Integer; var counter: Integer)
+  : TOut; overload;
+  var
+    left, right, mid, count: Integer;
+    elem: noteRecord;
+    flag:boolean;
+begin
+Setlength(result,0);
+  flag:=true;
+  counter := 0;
+  left := Low(mas);
+  right := High(mas);
+
+  while (left <= right) and flag do
+  begin
+    mid := left + (right - left) div 2;
+    elem := mas[mid];
+    Inc(counter);
+    if (elem.num >= start) and (elem.num <= myEnd) then
+    begin
+      Result := SearchAllDiapos(mas, mid, start, myEnd);
+      flag:=false;
+    end;
+    if (elem.num < start) then
+      left := mid + 1
+    else
+      right := mid - 1;
+  end;
+
+end;
+
+end.

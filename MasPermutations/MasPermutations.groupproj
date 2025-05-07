@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EF0A1BAF-47DA-463E-9140-656DD6D59ECC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\HanoiTower\HanoiTower.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\OAiP\Лабораторная№5\LabWork5.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="HanoiTower">
+        <MSBuild Projects="..\HanoiTower\HanoiTower.dproj"/>
+    </Target>
+    <Target Name="HanoiTower:Clean">
+        <MSBuild Projects="..\HanoiTower\HanoiTower.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HanoiTower:Make">
+        <MSBuild Projects="..\HanoiTower\HanoiTower.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LabWork5">
+        <MSBuild Projects="..\..\OAiP\Лабораторная№5\LabWork5.dproj"/>
+    </Target>
+    <Target Name="LabWork5:Clean">
+        <MSBuild Projects="..\..\OAiP\Лабораторная№5\LabWork5.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LabWork5:Make">
+        <MSBuild Projects="..\..\OAiP\Лабораторная№5\LabWork5.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="HanoiTower;LabWork5"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="HanoiTower:Clean;LabWork5:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="HanoiTower:Make;LabWork5:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

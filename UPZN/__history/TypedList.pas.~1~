@@ -1,0 +1,330 @@
+unit GenericPointerList;
+
+interface
+uses SysUtils;
+
+type
+  // Базовый тип для элемента списка
+  PListNode = ^TListNode;
+  TListNode = record
+    Data: Pointer;       // Указатель на данные
+    Next: PListNode;      // Указатель на следующий элемент
+  end;
+
+  // Функция сравнения элементов (для сортировки и поиска)
+  TCompareFunc = function(A, B: Pointer): Integer;
+
+  // Класс универсального списка
+  TPointerList = class
+  private
+    FHead: PListNode;     // Указатель на голову списка
+    FCount: Integer;      // Количество элементов
+    FCompareFunc: TCompareFunc; // Функция сравнения
+    procedure FreeNode(Node: PListNode);
+  public
+    constructor Create(CompareFunc: TCompareFunc = nil);
+    destructor Destroy; override;
+
+    // Основные операции
+    procedure Add(Data: Pointer);
+    procedure Insert(Index: Integer; Data: Pointer);
+    procedure Delete(Index: Integer);
+    function Remove(Data: Pointer): Boolean;
+    function IndexOf(Data: Pointer): Integer;
+    function GetItem(Index: Integer): Pointer;
+    procedure SetItem(Index: Integer; Data: Pointer);
+    procedure Clear;
+
+    // Дополнительные операции
+    procedure Sort(CompareFunc: TCompareFunc = nil);
+    function Contains(Data: Pointer): Boolean;
+    procedure Reverse;
+
+    // Свойства
+    property Count: Integer read FCount;
+    property Items[Index: Integer]: Pointer read GetItem write SetItem; default;
+  end;
+
+implementation
+
+{ TPointerList }
+
+constructor TPointerList.Create(CompareFunc: TCompareFunc = nil);
+begin
+  inherited Create;
+  FHead := nil;
+  FCount := 0;
+  FCompareFunc := CompareFunc;
+end;
+
+destructor TPointerList.Destroy;
+begin
+  Clear;
+  inherited Destroy;
+end;
+
+procedure TPointerList.Add(Data: Pointer);
+var
+  NewNode, Current: PListNode;
+begin
+  New(NewNode);
+  NewNode^.Data := Data;
+  NewNode^.Next := nil;
+
+  if FHead = nil then
+    FHead := NewNode
+  else
+  begin
+    Current := FHead;
+    while Current^.Next <> nil do
+      Current := Current^.Next;
+    Current^.Next := NewNode;
+  end;
+  Inc(FCount);
+end;
+
+procedure TPointerList.Insert(Index: Integer; Data: Pointer);
+var
+  NewNode, Current, Prev: PListNode;
+  i: Integer;
+begin
+  if (Index < 0) or (Index > FCount) then
+    raise Exception.Create('Index out of bounds');
+
+  New(NewNode);
+  NewNode^.Data := Data;
+
+  if Index = 0 then
+  begin
+    NewNode^.Next := FHead;
+    FHead := NewNode;
+  end
+  else
+  begin
+    Current := FHead;
+    Prev := nil;
+    for i := 0 to Index - 1 do
+    begin
+      Prev := Current;
+      Current := Current^.Next;
+    end;
+    NewNode^.Next := Current;
+    Prev^.Next := NewNode;
+  end;
+  Inc(FCount);
+end;
+
+procedure TPointerList.Delete(Index: Integer);
+var
+  Current, Prev: PListNode;
+  i: Integer;
+begin
+  if (Index < 0) or (Index >= FCount) then
+    raise Exception.Create('Index out of bounds');
+
+  if Index = 0 then
+  begin
+    Current := FHead;
+    FHead := FHead^.Next;
+    FreeNode(Current);
+  end
+  else
+  begin
+    Current := FHead;
+    Prev := nil;
+    for i := 0 to Index - 1 do
+    begin
+      Prev := Current;
+      Current := Current^.Next;
+    end;
+    Prev^.Next := Current^.Next;
+    FreeNode(Current);
+  end;
+  Dec(FCount);
+end;
+
+function TPointerList.Remove(Data: Pointer): Boolean;
+var
+  Index: Integer;
+begin
+  Index := IndexOf(Data);
+  Result := Index <> -1;
+  if Result then
+    Delete(Index);
+end;
+
+function TPointerList.IndexOf(Data: Pointer): Integer;
+var
+  Current: PListNode;
+  i: Integer;
+begin
+  Current := FHead;
+  i := 0;
+  while Current <> nil do
+  begin
+    if Assigned(FCompareFunc)  then
+    begin
+      if FCompareFunc(Current^.Data, Data) = 0 then  // Исправленная строка
+        Exit(i);
+    end
+    else if Current^.Data = Data then
+      Exit(i);
+
+    Current := Current^.Next;
+    Inc(i);
+  end;
+  Result := -1;
+end;
+
+function TPointerList.GetItem(Index: Integer): Pointer;
+var
+  Current: PListNode;
+  i: Integer;
+begin
+  if (Index < 0) or (Index >= FCount) then
+    raise Exception.Create('Index out of bounds');
+
+  Current := FHead;
+  for i := 0 to Index - 1 do
+    Current := Current^.Next;
+  Result := Current^.Data;
+end;
+
+procedure TPointerList.SetItem(Index: Integer; Data: Pointer);
+var
+  Current: PListNode;
+  i: Integer;
+begin
+  if (Index < 0) or (Index >= FCount) then
+    raise Exception.Create('Index out of bounds');
+
+  Current := FHead;
+  for i := 0 to Index - 1 do
+    Current := Current^.Next;
+  Current^.Data := Data;
+end;
+
+procedure TPointerList.Clear;
+var
+  Current, Temp: PListNode;
+begin
+  Current := FHead;
+  while Current <> nil do
+  begin
+    Temp := Current;
+    Current := Current^.Next;
+    FreeNode(Temp);
+  end;
+  FHead := nil;
+  FCount := 0;
+end;
+
+procedure TPointerList.Sort(CompareFunc: TCompareFunc = nil);
+var
+  Func: TCompareFunc;
+
+  function MergeSort(Head: PListNode): PListNode;
+  var
+    Left, Right, Tail, Next, Temp: PListNode;
+    Count, Half, i: Integer;
+  begin
+    if (Head = nil) or (Head^.Next = nil) then
+      Exit(Head);
+
+    // Разделяем список на две части
+    Count := 0;
+    Temp := Head;
+    while Temp <> nil do
+    begin
+      Inc(Count);
+      Temp := Temp^.Next;
+    end;
+
+    Half := Count div 2;
+    Temp := Head;
+    for i := 1 to Half - 1 do
+      Temp := Temp^.Next;
+
+    Right := Temp^.Next;
+    Temp^.Next := nil;
+    Left := Head;
+
+    // Рекурсивно сортируем каждую часть
+    Left := MergeSort(Left);
+    Right := MergeSort(Right);
+
+    // Слияние отсортированных списков
+    Tail := nil;
+    Result := nil;
+
+    while (Left <> nil) and (Right <> nil) do
+    begin
+      if Func(Left^.Data, Right^.Data) <= 0 then
+      begin
+        Next := Left;
+        Left := Left^.Next;
+      end
+      else
+      begin
+        Next := Right;
+        Right := Right^.Next;
+      end;
+
+      if Tail = nil then
+        Result := Next
+      else
+        Tail^.Next := Next;
+      Tail := Next;
+    end;
+
+    if Left <> nil then
+      Next := Left
+    else
+      Next := Right;
+
+    if Tail = nil then
+      Result := Next
+    else
+      Tail^.Next := Next;
+  end;
+
+begin
+  if FCount < 2 then Exit;
+
+  if Assigned(CompareFunc) then
+    Func := CompareFunc
+  else if Assigned(FCompareFunc) then
+    Func := FCompareFunc
+  else
+    raise Exception.Create('No compare function specified');
+
+  FHead := MergeSort(FHead);
+end;
+
+function TPointerList.Contains(Data: Pointer): Boolean;
+begin
+  Result := IndexOf(Data) <> -1;
+end;
+
+procedure TPointerList.Reverse;
+var
+  Prev, Current, Next: PListNode;
+begin
+  Prev := nil;
+  Current := FHead;
+  while Current <> nil do
+  begin
+    Next := Current^.Next;
+    Current^.Next := Prev;
+    Prev := Current;
+    Current := Next;
+  end;
+  FHead := Prev;
+end;
+
+procedure TPointerList.FreeNode(Node: PListNode);
+begin
+  Dispose(Node);
+end;
+
+end.

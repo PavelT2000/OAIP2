@@ -1,0 +1,204 @@
+unit Expression;
+
+interface
+
+uses SysUtils, System.Generics.Collections;
+
+type
+  // Тип токена (можно расширить)
+  TTokenType = (ttNumber, // Число (например, 42 или 3.14)
+    ttOperator, // Оператор (+, -, *, /)
+    ttSymbol, // Символ (скобки, запятые и т.д.)
+    ttIdentifier // Идентификатор (переменные, функции)
+    );
+
+  // Запись, представляющая токен
+  TToken = record
+    TokenType: TTokenType;
+    Value: string; // Лексема (само значение токена)
+    Position: Integer; // Позиция в исходной строке (опционально)
+  end;
+
+  // Класс выражения
+  TExpression = class
+  private
+    FTokens: TArray<TToken>; // Список токенов (можно заменить на TList<TToken>)
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    // Разбор строки на токены
+    procedure ReadFromString(const Input: string);
+
+    // Свойство для доступа к токенам (опционально)
+    property Tokens: TArray<TToken> read FTokens;
+  end;
+
+implementation
+
+constructor TExpression.Create;
+begin
+  inherited;
+  SetLength(FTokens, 0); // Инициализация пустого массива
+end;
+
+destructor TExpression.Destroy;
+begin
+  SetLength(FTokens, 0); // Очистка массива
+  inherited;
+end;
+
+procedure TExpression.ReadFromString(const Input: string);
+var
+  i, Len: Integer;
+  CurrentChar: Char;
+  CurrentToken: string;
+  Output: TList<TToken>;
+  OperatorStack: TStack<TToken>;
+  function GetOperatorPriority(const Op: string): Integer;
+  begin
+    case Op of
+      '^':
+        Result := 4;
+      '*', '/':
+        Result := 3;
+      '+', '-':
+        Result := 2;
+    else
+      Result := 0;
+    end;
+  end;
+// Добавляет текущий токен в выходной список
+  procedure FlushToken;
+  var
+    Token: TToken;
+  begin
+    if CurrentToken = '' then
+      Exit;
+
+    Token.Value := CurrentToken;
+    Token.Position := i - Length(CurrentToken);
+
+    // Определяем тип токена
+    if (CurrentToken[1] in ['0' .. '9']) or
+      ((Length(CurrentToken) > 1) and (CurrentToken[1] = '-') and
+      (CurrentToken[2] in ['0' .. '9'])) then
+      Token.TokenType := ttNumber
+    else if CurrentToken = '(' then
+      Token.TokenType := ttSymbol
+    else if CurrentToken = ')' then
+      Token.TokenType := ttSymbol
+    else if CurrentToken[1] in ['+', '-', '*', '/', '^'] then
+      Token.TokenType := ttOperator
+    else
+      Token.TokenType := ttIdentifier;
+
+    // Добавляем в выход или стек (по алгоритму Shunting Yard)
+    case Token.TokenType of
+      ttNumber, ttIdentifier:
+        Output.Add(Token);
+      ttSymbol:
+        if Token.Value = '(' then
+          OperatorStack.Push(Token)
+        else if Token.Value = ')' then
+        begin
+          while (OperatorStack.Count > 0) and
+            (OperatorStack.Peek.Value <> '(') do
+            Output.Add(OperatorStack.Pop);
+          if OperatorStack.Count > 0 then
+            OperatorStack.Pop; // Удаляем '('
+        end;
+      ttOperator:
+        begin
+          while (OperatorStack.Count > 0) and (OperatorStack.Peek.Value <> '(')
+            and (GetOperatorPriority(OperatorStack.Peek.Value) >=
+            GetOperatorPriority(Token.Value)) do
+            Output.Add(OperatorStack.Pop);
+          OperatorStack.Push(Token);
+        end;
+    end;
+
+    CurrentToken := '';
+  end;
+
+begin
+  Output := TList<TToken>.Create;
+  OperatorStack := TStack<TToken>.Create;
+  try
+    Len := Length(Input);
+    i := 1;
+    CurrentToken := '';
+
+    while i <= Len do
+    begin
+      CurrentChar := Input[i];
+
+      // Пропускаем пробелы
+      if CurrentChar = ' ' then
+      begin
+        FlushToken;
+        Inc(i);
+        Continue;
+      end;
+
+      // Обработка чисел (включая отрицательные)
+      if (CurrentChar in ['0' .. '9']) or
+        ((CurrentChar = '-') and (CurrentToken = '') and (i < Len) and
+        (Input[i + 1] in ['0' .. '9'])) then
+      begin
+        CurrentToken := CurrentToken + CurrentChar;
+        Inc(i);
+        Continue;
+      end;
+
+      // Обработка операторов и скобок
+      if CurrentChar in ['+', '-', '*', '/', '^', '(', ')'] then
+      begin
+        FlushToken;
+        CurrentToken := CurrentChar;
+        FlushToken;
+        Inc(i);
+        Continue;
+      end;
+
+      // Обработка идентификаторов (переменные, функции)
+      if CurrentChar in ['a' .. 'z', 'A' .. 'Z', '_'] then
+      begin
+        CurrentToken := CurrentToken + CurrentChar;
+        Inc(i);
+        Continue;
+      end;
+
+      Inc(i);
+    end;
+
+    FlushToken; // Последний токен
+
+    // Выгружаем оставшиеся операторы из стека
+    while OperatorStack.Count > 0 do
+      Output.Add(OperatorStack.Pop);
+
+    // Сохраняем результат в FTokens
+    FTokens := Output.ToArray;
+  finally
+    Output.Free;
+    OperatorStack.Free;
+  end;
+end;
+
+// Возвращает приоритет оператора
+function TExpression.GetOperatorPriority(const Op: string): Integer;
+begin
+  case Op of
+    '^':
+      Result := 4;
+    '*', '/':
+      Result := 3;
+    '+', '-':
+      Result := 2;
+  else
+    Result := 0;
+  end;
+end;
+
+end.

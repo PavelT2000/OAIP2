@@ -1,0 +1,63 @@
+program MasPermutations;
+
+{$APPTYPE CONSOLE}
+{$R *.res}
+
+uses
+  System.SysUtils;
+
+const
+  count = 6;
+
+Type
+  Tmas = array [1 .. count] of integer;
+
+procedure PrintMas(var arr: Tmas);
+begin
+  for var i := Low(arr) to High(arr) do
+  begin
+    write(arr[i], ' ');
+  end;
+  writeln;
+end;
+
+procedure perm(arr: Tmas; n: integer;var counter:integer);
+var
+  temp: integer;
+begin
+  if (n < 2) then
+  begin
+    PrintMas(arr);
+    Inc(counter);
+  end
+  else
+  begin
+    for var i := n  downto low(arr) do
+    begin
+      temp := arr[i];
+      arr[i] := arr[n];
+      arr[n] := temp;
+      perm(arr, n - 1,counter);
+      temp := arr[i];
+      arr[i] := arr[n];
+      arr[n] := temp;
+    end;
+  end;
+
+end;
+
+var
+  count:integer;
+  mas: Tmas;
+  counter:integer;
+begin
+  counter:=0;
+  for var i := Low(mas) to High(mas) do
+  begin
+    mas[i] := i;
+  end;
+  perm(mas, count,counter);
+  writeln('Всего ',counter,' перестановок');
+  readln;
+
+end.

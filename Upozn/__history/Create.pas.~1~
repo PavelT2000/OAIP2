@@ -1,0 +1,179 @@
+unit Add;
+
+
+interface
+uses System.SysUtils,
+  Storage,
+  Windows;
+
+implementation
+procedure clrscr;
+var
+  cursor: COORD;
+  r: cardinal;
+  abs: TDAte;
+begin
+  r := 300;
+  cursor.X := 0;
+  cursor.Y := 0;
+  FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 80 * r,
+    cursor, r);
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursor);
+end;
+procedure GetInput(str: string);
+begin
+  clrscr;
+  Writeln(str);
+end;
+procedure AddCategory;
+var
+  name: string;
+  flag: boolean;
+begin
+  GetInput(Storage.GetCategories);
+
+  GetInput('Введите назвние категории или Enter для отмены');
+  readln(name);
+  Storage.AddCategory(name);
+  if name <> '' then
+    GetInput('Добавлено')
+  else
+    GetInput('Отменено');
+end;
+procedure AddDish;
+var
+  name, input: string;
+  category: integer;
+  cost: Currency;
+  flag: boolean;
+  choose: integer;
+begin
+  if (Length(categories) > 0) then
+  begin
+    flag := true;
+    While flag do
+    begin
+      GetInput('Введите название блюда');
+      readln(name);
+      if name <> '' then
+        flag := false;
+    end;
+    flag := true;
+    While flag do
+    begin
+      GetInput('Выберите категорию блюда:' + #10 + #13 + Storage.GetCategories);
+
+      readln(input);
+      if (TryStrToInt(input, category)) and (category >= Low(categories)) and
+        (category <= High(categories)) then
+      begin
+        flag := false;
+      end;
+    end;
+    flag := true;
+    While flag do
+    begin
+      GetInput('Введите цену');
+      readln(input);
+      if (TryStrToCurr(input, cost)) then
+      begin
+        flag := false;
+      end;
+    end;
+    Storage.AddDish(name, cost, category);
+    GetInput('Добавлено');
+  end
+  else
+    GetInput('Вы не добавили ни одной категории');
+end;
+procedure AddOrder;
+var
+  input: string;
+  Table: integer;
+  dishesList: pDishElement;
+  lastElem: pDishElement;
+  flag: boolean;
+  id: integer;
+  count: integer;
+begin
+  if (Length(categories) > 0) then
+  begin
+    flag := true;
+    While flag do
+    begin
+      GetInput('Введите номер стола');
+      readln(input);
+      if TryStrToInt(input, Table) then
+        flag := false;
+    end;
+    flag := true;
+    new(dishesList);
+    lastElem := dishesList;
+    dishesList.count := 0;
+
+    While flag do
+    begin
+      ShowDishes;
+      Writeln('Выберите блюда или Enter чтобы закончить:' + #10 + #13);
+
+      readln(input);
+      if (TryStrToInt(input, id)) and (id >= Low(dishes)) and
+        (id <= High(dishes)) then
+      begin
+
+        flag := false;
+      end;
+    end;
+    flag := true;
+    While flag do
+    begin
+      GetInput('Введите количество');
+      readln(input);
+      if TryStrToInt(input, count) then
+      begin
+        flag := false;
+        if count > 0 then
+        begin
+          new(lastElem.next);
+          lastElem.next.DishID := id;
+          lastElem.next.count := count;
+          Storage.AddOrder(Table, dishesList);
+        end;
+      end;
+    end;
+
+    GetInput('Добавлено');
+  end
+  else
+    GetInput('Вы не добавили ни одной категории');
+end;
+procedure Create;
+var
+  choose: integer;
+  input: string;
+begin
+  GetInput('Добавить:' + #10 + #13 + '1.Заказ' + #10 + #13 + '2.Блюдо' + #10 +
+    #13 + '3.Категорию блюд' + #10 + #13);
+  readln(input);
+  if (TryStrToInt(input, choose)) then
+    case choose of
+      1:
+        begin
+          AddOrder;
+          readln
+        end;
+      2:
+        begin
+          AddDish;
+          readln;
+        end;
+      3:
+        begin
+          AddCategory;
+          readln;
+        end;
+    end;
+end;
+
+
+end.

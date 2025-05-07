@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.758,C:\Univer\OAIP2\Upozn\Unit1.pas=C:\Univer\OAIP2\Upozn\Storage.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.681,=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.677,C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Univer\OAIP2\Upozn\MainUpozn.dproj</Transaction>
+    <Transaction>2025.05.07 18:26:46.849,=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+    <Transaction>2025.05.07 18:26:55.491,C:\Univer\OAIP2\Upozn\Add.pas=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+    <Transaction>2025.05.07 18:32:48.581,C:\Univer\OAIP2\Upozn\Create.pas=C:\Univer\OAIP2\Upozn\Add.pas</Transaction>
+    <Transaction>2025.05.07 18:32:54.255,=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+    <Transaction>2025.05.07 18:33:03.017,C:\Univer\OAIP2\Upozn\Read.pas=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+    <Transaction>2025.05.07 18:34:19.552,C:\Univer\OAIP2\Upozn\CreateUnit.pas=C:\Univer\OAIP2\Upozn\Create.pas</Transaction>
+    <Transaction>2025.05.07 19:47:46.017,C:\Univer\OAIP2\Upozn\ReadГтше.pas=C:\Univer\OAIP2\Upozn\Read.pas</Transaction>
+    <Transaction>2025.05.07 19:47:55.106,C:\Univer\OAIP2\Upozn\ReadUnit.pas=C:\Univer\OAIP2\Upozn\ReadГтше.pas</Transaction>
+    <Transaction>2025.05.07 20:01:46.108,=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+    <Transaction>2025.05.07 20:01:55.367,C:\Univer\OAIP2\Upozn\LoadSave.pas=C:\Univer\OAIP2\Upozn\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

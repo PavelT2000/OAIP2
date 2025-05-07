@@ -1,0 +1,16 @@
+program Kursach;
+
+uses
+  Vcl.Forms,
+  main in 'main.pas' {Form2},
+  Calc in 'Calc.pas',
+  FunctionPlotter in 'FunctionPlotter.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm2, Form2);
+  Application.Run;
+end.

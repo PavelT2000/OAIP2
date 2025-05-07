@@ -1,0 +1,194 @@
+program MainUpozn;
+
+{$APPTYPE CONSOLE}
+{$R *.res}
+
+uses
+  System.SysUtils,
+  Storage in 'Storage.pas',
+  Windows;
+
+procedure clrscr;
+var
+  cursor: COORD;
+  r: cardinal;
+begin
+  r := 300;
+  cursor.X := 0;
+  cursor.Y := 0;
+  FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 80 * r,
+    cursor, r);
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursor);
+end;
+
+procedure ShowDishes;
+
+begin
+  clrscr;
+  Writeln('Список блюд:');
+  Write(Storage.GetDishes);
+  Writeln('Нажмите Enter чтобы продолжить');
+  Readln;
+
+end;
+
+procedure AddDish;
+var
+  name, desc: string;
+  cost: currency;
+begin
+  clrscr;
+  Writeln('Введите название блюда');
+  Readln(name);
+  Writeln('Введите описание блюда');
+  Readln(desc);
+  Writeln('Введите цену блюда');
+  Readln(cost);
+
+  Storage.AddDish(name, desc, cost);
+
+  Writeln('Успешно добавлено, нажмите Enter чтобы продолжить');
+  Readln;
+
+end;
+
+procedure SelectDish;
+var
+  input, ans: string;
+begin
+  clrscr;
+  Writeln('Список блюд:');
+  Write(Storage.GetDishes);
+  Writeln('Введите ID или название блюда');
+  Readln(input);
+  ans := Storage.SelectDish(input);
+  if ans <> '' then
+  begin
+    Write(ans);
+    Writeln(', нажмите Enter чтобы продолжить');
+  end
+  else
+    Writeln('Блюдо выбрано, нажмите Enter чтобы продолжить');
+  Readln;
+
+end;
+
+procedure DeleteDish;
+begin
+  clrscr;
+  Storage.RemoveDish
+
+end;
+
+procedure AddOrder;
+var
+  list: headDishes;
+  time: TDateTime;
+  flag: boolean;
+  Choose: integer;
+  newDishElem:^dishElem;
+begin
+  flag := true;
+  time := System.SysUtils.Now;
+  Writeln('Введите ID блюда');
+  readln(choose);
+          if checkId(choose) then
+          begin
+          new(newDishElem);
+          newDishElem.DishID:=choose;
+
+          end;
+  While flag do
+  begin
+    clrscr;
+    Writeln('1.Добавить блюдо', #13, #10, '0.Закончить создание заказа',
+      #13, #10);
+    Readln(Choose);
+    case Choose of
+      1:
+        begin
+          Writeln('');
+          readln(choose);
+          if checkId(choose) then
+          begin
+          new(newDishElem);
+          newDishElem.DishID:=choose;
+
+
+          end;
+        end;
+      0:
+        flag := false;
+    end;
+
+  end;
+
+end;
+
+procedure Add;
+var
+  Choose: integer;
+  flag: boolean;
+  test:TCategory;
+begin
+  test:=TCategory.cold
+  Readln(choose);
+  Writeln(System.TypeInfo.G GetEnumName(test));
+  readln;
+  flag := true;
+  While flag do
+  begin
+    clrscr;
+    Writeln('1.Добавить заказ', #13, #10, '1.Добавить блюдо', #13, #10);
+    Readln(Choose);
+    case Choose of
+      1:
+        begin
+          AddOrder;
+          flag := false;
+        end;
+
+      2:
+        begin
+          AddDish;
+          flag := false;
+        end;
+
+    end;
+  end;
+
+end;
+
+var
+  Choose: integer;
+  flag: boolean;
+
+begin
+  Storage.LaunchStorage;
+  flag := true;
+  While flag do
+  begin
+    clrscr;
+    Writeln('0.Выход', #13, #10, '1.Добавить', #13, #10, '2.Выбрать блюдо', #13,
+      #10, '3.Удалить блюдо', #13, #10, '4.Изменить блюдо', #13, #10,
+      '5.Вывести блюдо', #13, #10, '6.Вывести все блюда');
+    Readln(Choose);
+    case Choose of
+      1:
+        Add;
+      2:
+        SelectDish;
+      3:
+        DeleteDish;
+      6:
+        ShowDishes;
+      0:
+        begin
+          flag := false;
+          Storage.ClearDishes;
+        end;
+    end;
+
+  end;
+
+end.

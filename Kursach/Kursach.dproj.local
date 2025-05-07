@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.497,=C:\Univer\OAIP2\Kursach\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.366,=C:\Univer\OAIP2\Kursach\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.066,C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\main.pas=C:\Univer\OAIP2\Kursach\main.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.135,C:\Univer\OAIP2\Kursach\Calculate.pas=C:\Univer\OAIP2\Kursach\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.971,C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\main.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.472,C:\Univer\OAIP2\Kursach\Unit1.pas=C:\Univer\OAIP2\Kursach\FunctionPlotter.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.764,=C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.145,C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\Univer\OAIP2\Kursach\Project2.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.066,C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\main.dfm=C:\Univer\OAIP2\Kursach\main.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.892,C:\Univer\OAIP2\Kursach\Calc.pas=C:\Univer\OAIP2\Kursach\Calculate.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.215,C:\Univer\OAIP2\Kursach\Kursach.dproj=C:\Univer\OAIP2\Kursach\Project2.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.971,C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\Pavel\Documents\Embarcadero\Studio\Projects\main.pas</Transaction>
+  </Transactions>
+</BorlandProject>

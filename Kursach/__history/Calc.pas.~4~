@@ -1,0 +1,197 @@
+unit Calc;
+
+interface
+uses SysUtils;
+function CalculateExpression(const Expr: string): Double;
+
+implementation
+function CalculateExpression(const Expr: string): Double;
+var
+  i: Integer;
+  CurrentChar: Char;
+  CurrentNumber: string;
+  Numbers: array of Double;
+  Operators: array of Char;
+  NumCount, OpCount: Integer;
+  ExpectUnary: Boolean;
+
+  procedure ProcessOperator(Op: Char);
+  begin
+    if OpCount > 0 then
+    begin
+      // Проверяем приоритет операций
+      if (Operators[OpCount-1] in ['^']) or
+         ((Operators[OpCount-1] in ['*','/']) and (Op in ['+','-','*','/'])) or
+         ((Operators[OpCount-1] in ['+','-']) and (Op in ['+','-'])) then
+      begin
+        case Operators[OpCount-1] of
+          '+': Numbers[NumCount-2] := Numbers[NumCount-2] + Numbers[NumCount-1];
+          '-': Numbers[NumCount-2] := Numbers[NumCount-2] - Numbers[NumCount-1];
+          '*': Numbers[NumCount-2] := Numbers[NumCount-2] * Numbers[NumCount-1];
+          '/': Numbers[NumCount-2] := Numbers[NumCount-2] / Numbers[NumCount-1];
+          '^': Numbers[NumCount-2] := Power(Numbers[NumCount-2], Numbers[NumCount-1]);
+        end;
+        Dec(NumCount);
+        Dec(OpCount);
+      end;
+    end;
+    // Добавляем новый оператор
+    if OpCount = Length(Operators) then
+      SetLength(Operators, OpCount + 10);
+    Operators[OpCount] := Op;
+    Inc(OpCount);
+    ExpectUnary := True;
+  end;
+
+  procedure ProcessFunction(const Func: string; Value: Double);
+  begin
+    if SameText(Func, 'sqrt') then
+      Numbers[NumCount-1] := Sqrt(Value)
+    else if SameText(Func, 'abs') then
+      Numbers[NumCount-1] := Abs(Value);
+  end;
+
+begin
+  Result := 0;
+  CurrentNumber := '';
+  NumCount := 0;
+  OpCount := 0;
+  ExpectUnary := True;
+  SetLength(Numbers, 10);
+  SetLength(Operators, 10);
+
+  i := 1;
+  while i <= Length(Expr) do
+  begin
+    CurrentChar := Expr[i];
+
+    // Пропускаем пробелы
+    if CurrentChar = ' ' then
+    begin
+      Inc(i);
+      Continue;
+    end;
+
+    // Обработка чисел
+    if CurrentChar in ['0'..'9', '.'] then
+    begin
+      CurrentNumber := CurrentNumber + CurrentChar;
+      ExpectUnary := False;
+      Inc(i);
+      Continue;
+    end;
+
+    // Обработка унарного минуса
+    if (CurrentChar = '-') and ExpectUnary then
+    begin
+      if NumCount = Length(Numbers) then
+        SetLength(Numbers, NumCount + 10);
+      Numbers[NumCount] := 0;
+      Inc(NumCount);
+      ProcessOperator('-');
+      Inc(i);
+      Continue;
+    end;
+
+    // Обработка функций (sqrt, abs)
+    if CurrentChar in ['a'..'z', 'A'..'Z'] then
+    begin
+      CurrentNumber := '';
+      while (i <= Length(Expr)) and (Expr[i] in ['a'..'z', 'A'..'Z']) do
+      begin
+        CurrentNumber := CurrentNumber + Expr[i];
+        Inc(i);
+      end;
+
+      // Пропускаем открывающую скобку
+      if (i <= Length(Expr)) and (Expr[i] = '(') then
+        Inc(i);
+
+      // Рекурсивно вычисляем аргумент функции
+      var ArgStart := i;
+      var BracketLevel := 1;
+      while (i <= Length(Expr)) and (BracketLevel > 0) do
+      begin
+        if Expr[i] = '(' then Inc(BracketLevel);
+        if Expr[i] = ')' then Dec(BracketLevel);
+        if BracketLevel > 0 then Inc(i);
+      end;
+      var ArgExpr := Copy(Expr, ArgStart, i - ArgStart);
+      var ArgValue := CalculateExpression(ArgExpr);
+      Inc(i);
+
+      if NumCount = Length(Numbers) then
+        SetLength(Numbers, NumCount + 10);
+      Numbers[NumCount] := ArgValue;
+      Inc(NumCount);
+      ProcessFunction(CurrentNumber, ArgValue);
+      ExpectUnary := False;
+      Continue;
+    end;
+
+    // Обработка модуля |x|
+    if CurrentChar = '|' then
+    begin
+      Inc(i);
+      var ArgStart := i;
+      while (i <= Length(Expr)) and (Expr[i] <> '|') do
+        Inc(i);
+      var ArgExpr := Copy(Expr, ArgStart, i - ArgStart);
+      var ArgValue := CalculateExpression(ArgExpr);
+      Inc(i);
+
+      if NumCount = Length(Numbers) then
+        SetLength(Numbers, NumCount + 10);
+      Numbers[NumCount] := Abs(ArgValue);
+      Inc(NumCount);
+      ExpectUnary := False;
+      Continue;
+    end;
+
+    // Обработка операторов
+    if CurrentChar in ['+', '-', '*', '/', '^'] then
+    begin
+      if CurrentNumber <> '' then
+      begin
+        if NumCount = Length(Numbers) then
+          SetLength(Numbers, NumCount + 10);
+        Numbers[NumCount] := StrToFloat(CurrentNumber);
+        Inc(NumCount);
+        CurrentNumber := '';
+      end;
+      ProcessOperator(CurrentChar);
+      Inc(i);
+      Continue;
+    end;
+
+    Inc(i);
+  end;
+
+  // Добавляем последнее число
+  if CurrentNumber <> '' then
+  begin
+    if NumCount = Length(Numbers) then
+      SetLength(Numbers, NumCount + 10);
+    Numbers[NumCount] := StrToFloat(CurrentNumber);
+    Inc(NumCount);
+  end;
+
+  // Выполняем оставшиеся операции
+  while OpCount > 0 do
+  begin
+    case Operators[OpCount-1] of
+      '+': Numbers[NumCount-2] := Numbers[NumCount-2] + Numbers[NumCount-1];
+      '-': Numbers[NumCount-2] := Numbers[NumCount-2] - Numbers[NumCount-1];
+      '*': Numbers[NumCount-2] := Numbers[NumCount-2] * Numbers[NumCount-1];
+      '/': Numbers[NumCount-2] := Numbers[NumCount-2] / Numbers[NumCount-1];
+      '^': Numbers[NumCount-2] := Power(Numbers[NumCount-2], Numbers[NumCount-1]);
+    end;
+    Dec(NumCount);
+    Dec(OpCount);
+  end;
+
+  if NumCount > 0 then
+    Result := Numbers[0];
+end;
+
+end.

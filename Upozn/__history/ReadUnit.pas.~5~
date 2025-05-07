@@ -1,0 +1,70 @@
+unit ReadUnit;
+
+interface
+
+uses System.SysUtils,
+  Storage,
+  Windows;
+
+procedure MyRead;
+procedure ShowDishes;
+procedure GetInput(str: string);
+
+implementation
+
+procedure clrscr;
+var
+  cursor: COORD;
+  r: cardinal;
+  abs: TDAte;
+begin
+  r := 300;
+  cursor.X := 0;
+  cursor.Y := 0;
+  FillConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), ' ', 80 * r,
+    cursor, r);
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursor);
+end;
+
+procedure GetInput(str: string);
+begin
+  clrscr;
+  Writeln(str);
+end;
+
+procedure ShowDishes;
+begin
+  clrscr;
+  Writeln(Storage.GetDishes);
+end;
+
+procedure MyRead;
+var
+  choose: integer;
+  input: string;
+begin
+  GetInput('Вывести:' + #10 + #13 + '1.Заказы' + #10 + #13 + '2.Блюда' + #10 +
+    #13 + '3.Категории блюд' + #10 + #13);
+  readln(input);
+  if (TryStrToInt(input, choose)) then
+    case choose of
+      1:
+        begin
+
+          readln;
+        end;
+      2:
+        begin
+          ShowDishes;
+          readln;
+        end;
+      3:
+        begin
+          clrscr;
+          Writeln(Storage.GetCategories);
+          readln;
+        end;
+    end;
+end;
+
+end.

@@ -1,0 +1,97 @@
+unit Calc;
+
+interface
+uses SysUtils;
+function CalculateExpression(const Expr: string): Double;
+
+implementation
+function CalculateExpression(const Expr: string): Double;
+var
+  i: Integer;
+  CurrentChar: Char;
+  CurrentNumber: string;
+  Numbers: array of Double;
+  Operators: array of Char;
+  NumCount, OpCount: Integer;
+
+  procedure ProcessOperator(Op: Char);
+  begin
+    if OpCount > 0 then
+    begin
+      // Проверяем приоритет операций
+      if (Operators[OpCount-1] in ['*','/']) or
+         ((Op in ['+','-']) and (Operators[OpCount-1] in ['+','-'])) then
+      begin
+        case Operators[OpCount-1] of
+          '+': Numbers[NumCount-2] := Numbers[NumCount-2] + Numbers[NumCount-1];
+          '-': Numbers[NumCount-2] := Numbers[NumCount-2] - Numbers[NumCount-1];
+          '*': Numbers[NumCount-2] := Numbers[NumCount-2] * Numbers[NumCount-1];
+          '/': Numbers[NumCount-2] := Numbers[NumCount-2] / Numbers[NumCount-1];
+        end;
+        Dec(NumCount);
+        Dec(OpCount);
+      end;
+    end;
+    // Добавляем новый оператор
+    if OpCount = Length(Operators) then
+      SetLength(Operators, OpCount + 10);
+    Operators[OpCount] := Op;
+    Inc(OpCount);
+  end;
+
+begin
+  Result := 0;
+  CurrentNumber := '';
+  NumCount := 0;
+  OpCount := 0;
+  SetLength(Numbers, 10);
+  SetLength(Operators, 10);
+
+  for i := 1 to Length(Expr) do
+  begin
+    CurrentChar := Expr[i];
+    if CurrentChar in ['0'..'9', '.'] then
+    begin
+      CurrentNumber := CurrentNumber + CurrentChar;
+    end
+    else if CurrentChar in ['+', '-', '*', '/'] then
+    begin
+      if CurrentNumber <> '' then
+      begin
+        if NumCount = Length(Numbers) then
+          SetLength(Numbers, NumCount + 10);
+        Numbers[NumCount] := StrToFloat(CurrentNumber);
+        Inc(NumCount);
+        CurrentNumber := '';
+      end;
+      ProcessOperator(CurrentChar);
+    end;
+  end;
+
+  // Добавляем последнее число
+  if CurrentNumber <> '' then
+  begin
+    if NumCount = Length(Numbers) then
+      SetLength(Numbers, NumCount + 10);
+    Numbers[NumCount] := StrToFloat(CurrentNumber);
+    Inc(NumCount);
+  end;
+
+  // Выполняем оставшиеся операции
+  while OpCount > 0 do
+  begin
+    case Operators[OpCount-1] of
+      '+': Numbers[NumCount-2] := Numbers[NumCount-2] + Numbers[NumCount-1];
+      '-': Numbers[NumCount-2] := Numbers[NumCount-2] - Numbers[NumCount-1];
+      '*': Numbers[NumCount-2] := Numbers[NumCount-2] * Numbers[NumCount-1];
+      '/': Numbers[NumCount-2] := Numbers[NumCount-2] / Numbers[NumCount-1];
+    end;
+    Dec(NumCount);
+    Dec(OpCount);
+  end;
+
+  if NumCount > 0 then
+    Result := Numbers[0];
+end;
+
+end.

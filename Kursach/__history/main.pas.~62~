@@ -1,0 +1,84 @@
+unit main;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Calc, Vcl.ExtCtrls,
+  FunctionPlotter, MathEpressionEvaluator;
+
+type
+  TForm2 = class(TForm)
+    Expression: TEdit;
+    CalculateBtn: TButton;
+    PaintBox1: TPaintBox;
+    procedure CalculateBtnClick(Sender: TObject);
+    procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+      MousePos: TPoint; var Handled: Boolean);
+    procedure FormCreate(Sender: TObject);
+    procedure FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
+      MousePos: TPoint; var Handled: Boolean);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  scale: integer;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.CalculateBtnClick(Sender: TObject);
+begin
+
+  try
+    begin
+    FunctionPlotter.DrawFunctionGraph(PaintBox1.Canvas, PaintBox1.Width,
+      PaintBox1.Height, Form2.Expression.Text, scale);
+    end;
+
+    finally
+
+    end;
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+  scale := 10;
+end;
+
+procedure TForm2.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+  if Expression.Text <> '' then
+  begin
+    Inc(scale);
+    FunctionPlotter.DrawFunctionGraph(PaintBox1.Canvas, PaintBox1.Width,
+      PaintBox1.Height, Form2.Expression.Text, scale);
+
+
+  end;
+end;
+
+procedure TForm2.FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+  if Expression.Text <> '' then
+  begin
+    Dec(scale);
+    FunctionPlotter.DrawFunctionGraph(PaintBox1.Canvas, PaintBox1.Width,
+      PaintBox1.Height, Form2.Expression.Text, scale);
+
+
+
+
+  end;
+end;
+
+end.

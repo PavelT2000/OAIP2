@@ -1,0 +1,74 @@
+program Lab7;
+
+{$APPTYPE CONSOLE}
+{$R *.res}
+
+uses
+  Winapi.Windows,
+  System.SysUtils;
+
+Const
+  letters = 'абвгдеёжзиёклмнопрстуфхцчшщъыьэюя';
+  vowels = 'аеиоуыэюя';
+
+function Split(str: String): TArray<String>;
+var
+  j, i, count: integer;
+begin
+  count := 0;
+  for var k := Low(str) to High(str) do
+  begin
+
+    if (str[k] = ',') then
+      Inc(count);
+  end;
+  SetLength(result, count+1);
+  count := 0;
+  i := 0;
+  While (i <= High(str)-1) do
+  begin
+    j := i+1;
+    While (str[j] <> '.') and (str[j] <> ',') do
+      Inc(j);
+    Result[count]:=str.Substring(i,j-i-1);
+    Inc(count);
+    i := j;
+  end;
+
+end;
+
+var
+  input, checkedLetters:String;
+  flag: boolean;
+  letter: ansiChar;
+  answ: string;
+  words:TArray<string>;
+  count:integer;
+begin
+  SetConsoleOutputCP(1251);
+  SetConsoleCP(1251);
+
+  Writeln('Задание 13:', #10, #13,
+    'Напечатать гласные буквы, которые не входят более чем в одно слово. Вывести исходную последовательность слов.');
+  Readln(input);
+  words:=Split(input);
+  for var i := Low(vowels) to High(vowels) do
+  begin
+    var j:integer;
+    j:=low(words);
+    count:=0;
+    While (j<=High(words)) and (count<=1) do
+    begin
+    if not words[j].Contains(vowels[i]) then
+    inc(count);
+
+    inc(j);
+    end;
+    if count>1 then
+    Write(vowels[i]);
+
+  end;
+
+readln;
+
+end.

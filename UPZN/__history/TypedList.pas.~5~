@@ -1,0 +1,52 @@
+program TestTypedList;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils, TypedList;
+
+type
+  TPerson = record
+    Name: string;
+    Age: Integer;
+  end;
+
+var
+  IntList: TGenericList<Integer>;
+  PersonList: TGenericList<TPerson>;
+  Person: TPerson;
+begin
+  // Список целых чисел
+  IntList := TGenericList<Integer>.Create;
+  try
+    IntList.AddItem(10);
+    IntList.AddItem(20);
+    IntList.AddItem(30);
+
+    Writeln('Integer List:');
+    for var I := 0 to IntList.Count - 1 do
+      Writeln(IntList[I]);
+  finally
+    IntList.Free;
+  end;
+
+  // Список записей
+  PersonList := TGenericList<TPerson>.Create;
+  try
+    Person.Name := 'Alice';
+    Person.Age := 25;
+    PersonList.AddItem(Person);
+
+    Person.Name := 'Bob';
+    Person.Age := 30;
+    PersonList.AddItem(Person);
+
+    Writeln(#13#10'Person List:');
+    for var I := 0 to PersonList.Count - 1 do
+      Writeln(PersonList[I].Name, ' - ', PersonList[I].Age);
+  finally
+    PersonList.Free;
+  end;
+
+  Readln;
+end.
