@@ -1,0 +1,598 @@
+=== PROJECT HIERARCHY ===
+├── .aiignore
+├── .gitattributes
+├── HanoiTower
+│   ├── HanoiTower.dpr
+│   ├── HanoiTower.dproj
+│   ├── HanoiTower.dproj.local
+│   ├── HanoiTower.identcache
+│   ├── HanoiTower.res
+│   └── __history
+│       ├── HanoiTower.dpr.~100~
+│       ├── HanoiTower.dpr.~101~
+│       ├── HanoiTower.dpr.~102~
+│       ├── HanoiTower.dpr.~103~
+│       ├── HanoiTower.dpr.~104~
+│       ├── HanoiTower.dpr.~105~
+│       ├── HanoiTower.dpr.~106~
+│       ├── HanoiTower.dpr.~107~
+│       ├── HanoiTower.dpr.~108~
+│       ├── HanoiTower.dpr.~109~
+│       ├── HanoiTower.dpr.~110~
+│       ├── HanoiTower.dpr.~111~
+│       ├── HanoiTower.dpr.~112~
+│       ├── HanoiTower.dpr.~96~
+│       ├── HanoiTower.dpr.~97~
+│       ├── HanoiTower.dpr.~98~
+│       └── HanoiTower.dpr.~99~
+├── Kursach
+│   ├── Calc.pas
+│   ├── FunctionPlotter.pas
+│   ├── Kursach.dpr
+│   ├── Kursach.dproj
+│   ├── Kursach.dproj.local
+│   ├── Kursach.identcache
+│   ├── Kursach.res
+│   ├── MathEpressionEvaluator.pas
+│   ├── __history
+│   │   ├── Calc.pas.~1~
+│   │   ├── Calc.pas.~2~
+│   │   ├── Calc.pas.~3~
+│   │   ├── Calc.pas.~4~
+│   │   ├── Expression.pas.~61~
+│   │   ├── Expression.pas.~62~
+│   │   ├── Expression.pas.~63~
+│   │   ├── Expression.pas.~64~
+│   │   ├── Expression.pas.~65~
+│   │   ├── Expression.pas.~66~
+│   │   ├── Expression.pas.~67~
+│   │   ├── Expression.pas.~68~
+│   │   ├── Expression.pas.~69~
+│   │   ├── Expression.pas.~70~
+│   │   ├── FunctionPlotter.pas.~1~
+│   │   ├── FunctionPlotter.pas.~2~
+│   │   ├── FunctionPlotter.pas.~3~
+│   │   ├── FunctionPlotter.pas.~4~
+│   │   ├── FunctionPlotter.pas.~5~
+│   │   ├── Kursach.dpr.~1~
+│   │   ├── Kursach.dpr.~2~
+│   │   ├── MathEpressionEvaluator.pas.~1~
+│   │   ├── MathEpressionEvaluator.pas.~2~
+│   │   ├── MathEpressionEvaluator.pas.~3~
+│   │   ├── MathEpressionEvaluator.pas.~4~
+│   │   ├── MathEpressionEvaluator.pas.~5~
+│   │   ├── main.dfm.~10~
+│   │   ├── main.dfm.~11~
+│   │   ├── main.dfm.~12~
+│   │   ├── main.dfm.~13~
+│   │   ├── main.dfm.~14~
+│   │   ├── main.dfm.~15~
+│   │   ├── main.dfm.~6~
+│   │   ├── main.dfm.~7~
+│   │   ├── main.dfm.~8~
+│   │   ├── main.dfm.~9~
+│   │   ├── main.pas.~57~
+│   │   ├── main.pas.~58~
+│   │   ├── main.pas.~59~
+│   │   ├── main.pas.~60~
+│   │   ├── main.pas.~61~
+│   │   ├── main.pas.~62~
+│   │   ├── main.pas.~63~
+│   │   ├── main.pas.~64~
+│   │   ├── main.pas.~65~
+│   │   └── main.pas.~66~
+│   ├── main.dfm
+│   └── main.pas
+├── Lab4Recursion
+│   ├── HanoiTower
+│   │   ├── HanoiTower.dproj.lnk
+│   │   ├── Permutations.vsd
+│   │   ├── ~$$Permutations.~vsd
+│   │   └── Отчёт.doc
+│   ├── Permutations
+│   │   ├── MasPermutations.dproj.lnk
+│   │   ├── Permutations.vsd
+│   │   ├── ~$$Permutations.~vsd
+│   │   ├── Отчёт рекурсия.docx
+│   │   └── Отчёт.doc
+│   └── QuickSort
+│       ├── LabWork5.dproj.lnk
+│       ├── QuickSort.vsd
+│       └── Отчёт.doc
+├── Lab7
+│   ├── FlowChart.vsd
+│   ├── Lab7.dpr
+│   ├── Lab7.dproj
+│   ├── Lab7.dproj.local
+│   ├── Lab7.identcache
+│   ├── Lab7.res
+│   ├── Project2.dpr
+│   ├── Project2.dproj
+│   ├── Project2.dproj.local
+│   ├── Project2.identcache
+│   ├── __history
+│   │   ├── Lab7.dpr.~74~
+│   │   ├── Lab7.dpr.~75~
+│   │   ├── Lab7.dpr.~76~
+│   │   ├── Lab7.dpr.~77~
+│   │   ├── Lab7.dpr.~78~
+│   │   ├── Lab7.dpr.~79~
+│   │   ├── Lab7.dpr.~80~
+│   │   ├── Lab7.dpr.~81~
+│   │   ├── Lab7.dpr.~82~
+│   │   └── Lab7.dpr.~83~
+│   ├── lab7part2.dpr
+│   ├── lab7part2.dproj
+│   ├── lab7part2.dproj.local
+│   ├── lab7part2.identcache
+│   ├── lab7part2.res
+│   └── Отчет.doc
+├── LabWork1
+│   ├── Lab
+│   │   ├── BinS.pas
+│   │   ├── BlockS.pas
+│   │   ├── Lab.dpr
+│   │   ├── Lab.dproj
+│   │   ├── Lab.dproj.local
+│   │   ├── Lab.identcache
+│   │   ├── Lab.res
+│   │   ├── Lab_project.tvsconfig
+│   │   ├── Neiro.dpr
+│   │   ├── ProjectGroup1.groupproj
+│   │   ├── ProjectGroup1.groupproj.local
+│   │   ├── SAll.pas
+│   │   └── __history
+│   │       ├── BinS.pas.~15~
+│   │       ├── BinS.pas.~16~
+│   │       ├── BinS.pas.~17~
+│   │       ├── BinS.pas.~18~
+│   │       ├── BinS.pas.~19~
+│   │       ├── BinS.pas.~20~
+│   │       ├── BinS.pas.~21~
+│   │       ├── BinS.pas.~22~
+│   │       ├── BinS.pas.~23~
+│   │       ├── BinS.pas.~24~
+│   │       ├── BinSearch.pas.~1~
+│   │       ├── BinSearch.pas.~2~
+│   │       ├── BinSearch.pas.~3~
+│   │       ├── BlockS.pas.~125~
+│   │       ├── BlockS.pas.~126~
+│   │       ├── BlockS.pas.~127~
+│   │       ├── BlockS.pas.~128~
+│   │       ├── BlockS.pas.~129~
+│   │       ├── BlockS.pas.~130~
+│   │       ├── BlockS.pas.~131~
+│   │       ├── BlockS.pas.~132~
+│   │       ├── BlockS.pas.~133~
+│   │       ├── BlockS.pas.~134~
+│   │       ├── Lab.dpr.~447~
+│   │       ├── Lab.dpr.~448~
+│   │       ├── Lab.dpr.~449~
+│   │       ├── Lab.dpr.~450~
+│   │       ├── Lab.dpr.~451~
+│   │       ├── Lab.dpr.~452~
+│   │       ├── Lab.dpr.~453~
+│   │       ├── Lab.dpr.~454~
+│   │       ├── Lab.dpr.~455~
+│   │       ├── Lab.dpr.~456~
+│   │       ├── SAll.pas.~31~
+│   │       ├── SAll.pas.~32~
+│   │       ├── SAll.pas.~33~
+│   │       ├── SAll.pas.~34~
+│   │       ├── SAll.pas.~35~
+│   │       ├── SAll.pas.~36~
+│   │       ├── SAll.pas.~37~
+│   │       ├── SAll.pas.~38~
+│   │       ├── SAll.pas.~39~
+│   │       ├── SAll.pas.~40~
+│   │       ├── SearchAll.pas.~1~
+│   │       ├── SearchAll.pas.~2~
+│   │       ├── SearchAll.pas.~3~
+│   │       ├── SearchAll.pas.~4~
+│   │       └── SearchAll.pas.~5~
+│   ├── БлокСхемаПолная.vsd
+│   ├── БлокСхемаСокр.vsd
+│   └── Отчёт.doc
+├── MasPermutations
+│   ├── MasPermutations.dpr
+│   ├── MasPermutations.dproj
+│   ├── MasPermutations.dproj.local
+│   ├── MasPermutations.groupproj
+│   ├── MasPermutations.groupproj.local
+│   ├── MasPermutations.identcache
+│   ├── MasPermutations.res
+│   └── __history
+│       ├── MasPermutations.dpr.~1~
+│       ├── MasPermutations.dpr.~2~
+│       └── MasPermutations.dpr.~3~
+├── UNIT тесты
+│   ├── DUnitX-master
+│   │   ├── .gitattributes
+│   │   ├── .gitignore
+│   │   ├── Build
+│   │   │   ├── Clean.bat
+│   │   │   ├── Dependencies-Clone.bat
+│   │   │   ├── Dependencies-Pull.bat
+│   │   │   ├── Dependencies-Set.bat
+│   │   │   ├── Dependencies-Show.bat
+│   │   │   ├── Dependencies.bat
+│   │   │   ├── Dependencies.txt
+│   │   │   ├── Run-Dependend-Delphi-2010-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-D10S-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE1-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE2-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE3-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE4-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE5-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE6-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE7-From-Path.bat
+│   │   │   ├── Run-Dependend-Delphi-XE8-From-Path.bat
+│   │   │   └── TestAndBuild.fbp7
+│   │   ├── CONTRIBUTING.md
+│   │   ├── Examples
+│   │   │   ├── DUnitX.Examples.AssertFailureCompare.pas
+│   │   │   ├── DUnitX.Examples.EqualityAsserts.pas
+│   │   │   ├── DUnitX.Examples.General.pas
+│   │   │   ├── DUnitX.Examples.UITest.dfm
+│   │   │   ├── DUnitX.Examples.UITest.pas
+│   │   │   ├── DUnitXExamples.rsb
+│   │   │   ├── DUnitXExamples_2010.dpr
+│   │   │   ├── DUnitXExamples_2010.dproj
+│   │   │   ├── DUnitXExamples_D10Berlin.dpr
+│   │   │   ├── DUnitXExamples_D10Berlin.dproj
+│   │   │   ├── DUnitXExamples_D10Rio.dpr
+│   │   │   ├── DUnitXExamples_D10Rio.dproj
+│   │   │   ├── DUnitXExamples_D10Seattle.dpr
+│   │   │   ├── DUnitXExamples_D10Seattle.dproj
+│   │   │   ├── DUnitXExamples_D10Sydney.dpr
+│   │   │   ├── DUnitXExamples_D10Sydney.dproj
+│   │   │   ├── DUnitXExamples_D10Tokyo.dpr
+│   │   │   ├── DUnitXExamples_D10Tokyo.dproj
+│   │   │   ├── DUnitXExamples_D11Alexandria.dpr
+│   │   │   ├── DUnitXExamples_D11Alexandria.dproj
+│   │   │   ├── DUnitXExamples_XE.dpr
+│   │   │   ├── DUnitXExamples_XE.dproj
+│   │   │   ├── DUnitXExamples_XE2.dpr
+│   │   │   ├── DUnitXExamples_XE2.dproj
+│   │   │   ├── DUnitXExamples_XE3.dpr
+│   │   │   ├── DUnitXExamples_XE3.dproj
+│   │   │   ├── DUnitXExamples_XE4.dpr
+│   │   │   ├── DUnitXExamples_XE4.dproj
+│   │   │   ├── DUnitXExamples_XE5.dpr
+│   │   │   ├── DUnitXExamples_XE5.dproj
+│   │   │   ├── DUnitXExamples_XE6.dpr
+│   │   │   ├── DUnitXExamples_XE6.dproj
+│   │   │   ├── DUnitXExamples_XE7.dpr
+│   │   │   ├── DUnitXExamples_XE7.dproj
+│   │   │   ├── DUnitXExamples_XE8.dpr
+│   │   │   ├── DUnitXExamples_XE8.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_D10Berlin.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_D10Berlin.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_D10Seattle.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_D10Seattle.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_D10Tokyo.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_D10Tokyo.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_XE5.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_XE5.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_XE6.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_XE6.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_XE7.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_XE7.dproj
+│   │   │   ├── DUnitXFiremonkeyGUI_XE8.dpr
+│   │   │   ├── DUnitXFiremonkeyGUI_XE8.dproj
+│   │   │   ├── DUnitXVCLGUI_D10Berlin.dpr
+│   │   │   ├── DUnitXVCLGUI_D10Berlin.dproj
+│   │   │   ├── DUnitXVCLGUI_D10Seattle.dpr
+│   │   │   ├── DUnitXVCLGUI_D10Seattle.dproj
+│   │   │   ├── DUnitXVCLGUI_XE.dpr
+│   │   │   ├── DUnitXVCLGUI_XE.dproj
+│   │   │   ├── DUnitXVCLGUI_XE7.dpr
+│   │   │   ├── DUnitXVCLGUI_XE7.dproj
+│   │   │   ├── Entitlement.TemplateOSX32.xml
+│   │   │   ├── NonNamespacedExample.pas
+│   │   │   └── ProviderExample.pas
+│   │   ├── Expert
+│   │   │   ├── DUnitX.Expert.CodeGen.NewProject.pas
+│   │   │   ├── DUnitX.Expert.CodeGen.NewTestProject.pas
+│   │   │   ├── DUnitX.Expert.CodeGen.NewTestUnit.pas
+│   │   │   ├── DUnitX.Expert.CodeGen.NewUnit.pas
+│   │   │   ├── DUnitX.Expert.CodeGen.SourceFile.pas
+│   │   │   ├── DUnitX.Expert.CodeGen.Templates.pas
+│   │   │   ├── DUnitX.Expert.Forms.NewProjectWizard.dfm
+│   │   │   ├── DUnitX.Expert.Forms.NewProjectWizard.pas
+│   │   │   ├── DUnitX.Expert.Forms.NewUnitWizard.dfm
+│   │   │   ├── DUnitX.Expert.Forms.NewUnitWizard.pas
+│   │   │   ├── DUnitX.Expert.NewProject.ico
+│   │   │   ├── DUnitX.Expert.NewUnit.ico
+│   │   │   ├── DUnitX.Expert.NewUnitWizard.pas
+│   │   │   ├── DUnitX.Expert.NewUnitWizardEx.pas
+│   │   │   ├── DUnitX.Expert.ProjectWizard.pas
+│   │   │   ├── DUnitX.Expert.ProjectWizardEx.pas
+│   │   │   ├── DUnitX.Expert.Registration.pas
+│   │   │   ├── DUnitX_IDE_Expert_2010.dpk
+│   │   │   ├── DUnitX_IDE_Expert_2010.dproj
+│   │   │   ├── DUnitX_IDE_Expert_D10Berlin.dpk
+│   │   │   ├── DUnitX_IDE_Expert_D10Berlin.dproj
+│   │   │   ├── DUnitX_IDE_Expert_D10Rio.dpk
+│   │   │   ├── DUnitX_IDE_Expert_D10Rio.dproj
+│   │   │   ├── DUnitX_IDE_Expert_D10Seattle.dpk
+│   │   │   ├── DUnitX_IDE_Expert_D10Seattle.dproj
+│   │   │   ├── DUnitX_IDE_Expert_D10Tokyo.dpk
+│   │   │   ├── DUnitX_IDE_Expert_D10Tokyo.dproj
+│   │   │   ├── DUnitX_IDE_Expert_D11Alexandria.dpk
+│   │   │   ├── DUnitX_IDE_Expert_D11Alexandria.dproj
+│   │   │   ├── DUnitX_IDE_Expert_D12Athens.dpk
+│   │   │   ├── DUnitX_IDE_Expert_D12Athens.dproj
+│   │   │   ├── DUnitX_IDE_Expert_Sydney.dpk
+│   │   │   ├── DUnitX_IDE_Expert_Sydney.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE2.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE2.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE3.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE3.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE4.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE4.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE5.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE5.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE6.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE6.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE7.dpk
+│   │   │   ├── DUnitX_IDE_Expert_XE7.dproj
+│   │   │   ├── DUnitX_IDE_Expert_XE8.dpk
+│   │   │   └── DUnitX_IDE_Expert_XE8.dproj
+│   │   ├── Images
+│   │   │   ├── Checked.bmp
+│   │   │   ├── Clear Filter.bmp
+│   │   │   ├── Collapse All.bmp
+│   │   │   ├── Compare.bmp
+│   │   │   ├── Expand All.bmp
+│   │   │   ├── Failed.bmp
+│   │   │   ├── Ignored.bmp
+│   │   │   ├── Log Error.bmp
+│   │   │   ├── Log Info.bmp
+│   │   │   ├── Log Warning.bmp
+│   │   │   ├── Passed.bmp
+│   │   │   ├── Results.bmp
+│   │   │   ├── Select All.bmp
+│   │   │   ├── Tests.bmp
+│   │   │   ├── Unchecked.bmp
+│   │   │   ├── Unselect All.bmp
+│   │   │   ├── Warning.bmp
+│   │   │   ├── logo.png
+│   │   │   └── logo.svg
+│   │   ├── LICENSE.txt
+│   │   ├── LiveTemplates
+│   │   │   ├── DUnitX.Delphi.create-ignore.xml
+│   │   │   ├── DUnitX.Delphi.create-setup.xml
+│   │   │   ├── DUnitX.Delphi.create-setupteardown.xml
+│   │   │   ├── DUnitX.Delphi.create-teardown.xml
+│   │   │   ├── DUnitX.Delphi.create-testcase.xml
+│   │   │   ├── DUnitX.Delphi.create-testfixture.xml
+│   │   │   ├── DUnitX.Delphi.create-testproc.xml
+│   │   │   ├── DUnitX.Delphi.register-testfixture.xml
+│   │   │   ├── DUnitX.Delphi.uses-clause.xml
+│   │   │   ├── Install.Readme.txt
+│   │   │   └── Install.bat
+│   │   ├── README.md
+│   │   ├── Source
+│   │   │   ├── DUNitX.Loggers.GUIX.fmx
+│   │   │   ├── DUNitX.Loggers.GUIX.pas
+│   │   │   ├── DUNitX.Loggers.GUIX.vlb
+│   │   │   ├── DUNitX.Loggers.MobileGUI.fmx
+│   │   │   ├── DUNitX.Loggers.MobileGUI.pas
+│   │   │   ├── DUnitX.Assert.Ex.pas
+│   │   │   ├── DUnitX.Assert.pas
+│   │   │   ├── DUnitX.Attributes.pas
+│   │   │   ├── DUnitX.AutoDetect.Console.pas
+│   │   │   ├── DUnitX.Banner.pas
+│   │   │   ├── DUnitX.CategoryExpression.pas
+│   │   │   ├── DUnitX.CommandLine.OptionDef.pas
+│   │   │   ├── DUnitX.CommandLine.Options.pas
+│   │   │   ├── DUnitX.CommandLine.Parser.pas
+│   │   │   ├── DUnitX.ComparableFormat.Csv.pas
+│   │   │   ├── DUnitX.ComparableFormat.Xml.pas
+│   │   │   ├── DUnitX.ComparableFormat.pas
+│   │   │   ├── DUnitX.ConsoleWriter.Base.pas
+│   │   │   ├── DUnitX.Constants.pas
+│   │   │   ├── DUnitX.DUnitCompatibility.pas
+│   │   │   ├── DUnitX.Exceptions.pas
+│   │   │   ├── DUnitX.Extensibility.PluginManager.pas
+│   │   │   ├── DUnitX.Extensibility.pas
+│   │   │   ├── DUnitX.FilterBuilder.pas
+│   │   │   ├── DUnitX.Filters.pas
+│   │   │   ├── DUnitX.FixtureProviderPlugin.pas
+│   │   │   ├── DUnitX.FixtureResult.pas
+│   │   │   ├── DUnitX.Generics.pas
+│   │   │   ├── DUnitX.Helpers.pas
+│   │   │   ├── DUnitX.Init.pas
+│   │   │   ├── DUnitX.InternalDataProvider.pas
+│   │   │   ├── DUnitX.InternalInterfaces.pas
+│   │   │   ├── DUnitX.IoC.pas
+│   │   │   ├── DUnitX.Linux.Console.pas
+│   │   │   ├── DUnitX.Loggers.Console.pas
+│   │   │   ├── DUnitX.Loggers.GUI.VCL.RichEdit.pas
+│   │   │   ├── DUnitX.Loggers.GUI.VCL.dfm
+│   │   │   ├── DUnitX.Loggers.GUI.VCL.pas
+│   │   │   ├── DUnitX.Loggers.Null.pas
+│   │   │   ├── DUnitX.Loggers.Text.pas
+│   │   │   ├── DUnitX.Loggers.XML.JUnit.pas
+│   │   │   ├── DUnitX.Loggers.XML.NUnit.pas
+│   │   │   ├── DUnitX.Loggers.XML.xUnit.pas
+│   │   │   ├── DUnitX.MacOS.Console.pas
+│   │   │   ├── DUnitX.MemoryLeakMonitor.Default.pas
+│   │   │   ├── DUnitX.MemoryLeakMonitor.FastMM4.pas
+│   │   │   ├── DUnitX.MemoryLeakMonitor.FastMM5.pas
+│   │   │   ├── DUnitX.MemoryLeaks.inc
+│   │   │   ├── DUnitX.OptionsDefinition.pas
+│   │   │   ├── DUnitX.ResStrs.pas
+│   │   │   ├── DUnitX.RunResults.pas
+│   │   │   ├── DUnitX.StackTrace.EurekaLog7.pas
+│   │   │   ├── DUnitX.StackTrace.JCL.pas
+│   │   │   ├── DUnitX.StackTrace.MadExcept3.pas
+│   │   │   ├── DUnitX.StackTrace.MadExcept4.pas
+│   │   │   ├── DUnitX.StackTrace.MadExcept5.pas
+│   │   │   ├── DUnitX.Stacktrace.inc
+│   │   │   ├── DUnitX.Test.pas
+│   │   │   ├── DUnitX.TestDataProvider.pas
+│   │   │   ├── DUnitX.TestFixture.pas
+│   │   │   ├── DUnitX.TestFramework.pas
+│   │   │   ├── DUnitX.TestNameParser.pas
+│   │   │   ├── DUnitX.TestResult.pas
+│   │   │   ├── DUnitX.TestRunner.pas
+│   │   │   ├── DUnitX.Timeout.pas
+│   │   │   ├── DUnitX.Types.pas
+│   │   │   ├── DUnitX.Utils.XML.pas
+│   │   │   ├── DUnitX.Utils.pas
+│   │   │   ├── DUnitX.WeakReference.pas
+│   │   │   ├── DUnitX.Windows.Console.pas
+│   │   │   └── DUnitX.inc
+│   │   ├── TestCaseProvider.md
+│   │   ├── Tests
+│   │   │   ├── DUnitX.Options.pas
+│   │   │   ├── DUnitX.SingleNameSpace.pas
+│   │   │   ├── DUnitX.Stacktrace.inc
+│   │   │   ├── DUnitX.Tests.Assert.pas
+│   │   │   ├── DUnitX.Tests.CategoryParser.pas
+│   │   │   ├── DUnitX.Tests.CommandLineParser.pas
+│   │   │   ├── DUnitX.Tests.ConsoleWriter.Base.pas
+│   │   │   ├── DUnitX.Tests.DUnitCompatibility.pas
+│   │   │   ├── DUnitX.Tests.Example.pas
+│   │   │   ├── DUnitX.Tests.Framework.pas
+│   │   │   ├── DUnitX.Tests.IgnoreFixture.pas
+│   │   │   ├── DUnitX.Tests.Inheritance.pas
+│   │   │   ├── DUnitX.Tests.IoC.pas
+│   │   │   ├── DUnitX.Tests.Loggers.XML.JUnit.pas
+│   │   │   ├── DUnitX.Tests.Loggers.XML.NUnit.pas
+│   │   │   ├── DUnitX.Tests.MemoryLeaks.pas
+│   │   │   ├── DUnitX.Tests.TestDataProvider.pas
+│   │   │   ├── DUnitX.Tests.TestFixture.pas
+│   │   │   ├── DUnitX.Tests.TestNameParser.pas
+│   │   │   ├── DUnitX.Tests.Utils.XML.pas
+│   │   │   ├── DUnitX.Tests.Utils.pas
+│   │   │   ├── DUnitX.Tests.WeakReference.pas
+│   │   │   ├── DUnitXGuiTest.dpr
+│   │   │   ├── DUnitXGuiTest.dproj
+│   │   │   ├── DUnitXTest.mes
+│   │   │   ├── DUnitXTestProject.dpr
+│   │   │   ├── DUnitXTest_D10Berlin.dproj
+│   │   │   ├── DUnitXTest_D10Rio.dproj
+│   │   │   ├── DUnitXTest_D10Rio.prjmgc
+│   │   │   ├── DUnitXTest_D10Seattle.dproj
+│   │   │   ├── DUnitXTest_D10Sydney.dproj
+│   │   │   ├── DUnitXTest_D10Tokyo.dproj
+│   │   │   ├── DUnitXTest_D11.dproj
+│   │   │   ├── DUnitXTest_D2010.dpr
+│   │   │   ├── DUnitXTest_D2010.dproj
+│   │   │   ├── DUnitXTest_XE.dpr
+│   │   │   ├── DUnitXTest_XE.dproj
+│   │   │   ├── DUnitXTest_XE2.dproj
+│   │   │   ├── DUnitXTest_XE3.dproj
+│   │   │   ├── DUnitXTest_XE4.dproj
+│   │   │   ├── DUnitXTest_XE5.dproj
+│   │   │   ├── DUnitXTest_XE6.dproj
+│   │   │   ├── DUnitXTest_XE7.dproj
+│   │   │   ├── DUnitXTest_XE8.dproj
+│   │   │   └── TestProjects.groupproj
+│   │   └── VSoft.DUnitX.dspec
+│   ├── DUnitX-master.zip
+│   ├── Tests.pas
+│   ├── UNITTests.dpr
+│   ├── UNITTests.dproj
+│   ├── UNITTests.dproj.local
+│   ├── UNITTests.identcache
+│   └── __history
+│       └── UNITTests.dpr.~1~
+├── UPZN
+│   ├── Project2.dpr
+│   ├── Project2.dproj
+│   ├── Project2.dproj.local
+│   ├── Project2.identcache
+│   ├── TypedList.pas
+│   └── __history
+│       ├── TypedList.pas.~1~
+│       ├── TypedList.pas.~2~
+│       ├── TypedList.pas.~3~
+│       ├── TypedList.pas.~4~
+│       ├── TypedList.pas.~5~
+│       ├── TypedList.pas.~6~
+│       ├── TypedList.pas.~7~
+│       ├── TypedList.pas.~8~
+│       └── TypedList.pas.~9~
+└── Upozn
+    ├── CreateUnit.pas
+    ├── FlowCharts
+    │   ├── Add.vsd
+    │   ├── Main.vsdx
+    │   ├── Remove.vsd
+    │   └── main.vsd
+    ├── LoadSave.pas
+    ├── MainUpozn.dpr
+    ├── MainUpozn.dproj
+    ├── MainUpozn.dproj.local
+    ├── MainUpozn.identcache
+    ├── MainUpozn.res
+    ├── ReadUnit.pas
+    ├── Storage.pas
+    ├── Testing.dpr
+    ├── Testing.dproj
+    ├── Testing.dproj.local
+    ├── Testing.identcache
+    ├── Testing.res
+    ├── UpdateUnit.pas
+    ├── UpoznOld.txt
+    └── __history
+        ├── Create.pas.~1~
+        ├── CreateUnit.pas.~1~
+        ├── CreateUnit.pas.~2~
+        ├── CreateUnit.pas.~3~
+        ├── CreateUnit.pas.~4~
+        ├── CreateUnit.pas.~5~
+        ├── CreateUnit.pas.~6~
+        ├── CreateUnit.pas.~7~
+        ├── LoadSave.pas.~1~
+        ├── MainUpozn.dpr.~466~
+        ├── MainUpozn.dpr.~467~
+        ├── MainUpozn.dpr.~468~
+        ├── MainUpozn.dpr.~469~
+        ├── MainUpozn.dpr.~470~
+        ├── MainUpozn.dpr.~471~
+        ├── MainUpozn.dpr.~472~
+        ├── MainUpozn.dpr.~473~
+        ├── MainUpozn.dpr.~474~
+        ├── MainUpozn.dpr.~475~
+        ├── MainUpozn.dpr.~476~
+        ├── ReadUnit.pas.~1~
+        ├── ReadUnit.pas.~2~
+        ├── ReadUnit.pas.~3~
+        ├── ReadUnit.pas.~4~
+        ├── ReadUnit.pas.~5~
+        ├── Storage.pas.~357~
+        ├── Storage.pas.~358~
+        ├── Storage.pas.~359~
+        ├── Storage.pas.~360~
+        ├── Storage.pas.~361~
+        ├── Storage.pas.~362~
+        ├── Storage.pas.~363~
+        ├── Storage.pas.~364~
+        ├── Storage.pas.~365~
+        ├── Storage.pas.~366~
+        ├── Testing.dpr.~1~
+        ├── Testing.dpr.~2~
+        ├── Testing.dpr.~3~
+        ├── Testing.dpr.~4~
+        ├── Testing.dpr.~5~
+        ├── Testing.dpr.~6~
+        ├── UpdateUnit.pas.~10~
+        ├── UpdateUnit.pas.~1~
+        ├── UpdateUnit.pas.~2~
+        ├── UpdateUnit.pas.~3~
+        ├── UpdateUnit.pas.~4~
+        ├── UpdateUnit.pas.~5~
+        ├── UpdateUnit.pas.~6~
+        ├── UpdateUnit.pas.~7~
+        ├── UpdateUnit.pas.~8~
+        └── UpdateUnit.pas.~9~
+
+=== SOURCE CODE ===
