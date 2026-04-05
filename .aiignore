@@ -1,0 +1,24 @@
+# Build artifacts and executables
+**/Win32/
+**/__history/
+*.exe
+*.dcu
+*.res
+*.identcache
+*.dproj.local
+*.tvsconfig
+*.lnk
+
+# Documentation and temporary files
+*.doc
+*.docx
+*.vsd
+*.vsdx
+~$$*
+
+# External dependencies and libraries
+"UNIT теста/DUnitX-master/"
+
+# IDE/Project specific metadata
+*.groupproj
+*.groupproj.local
